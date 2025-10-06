@@ -19,6 +19,10 @@ public class ModelLibro {
 
     private int publicacion;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "autor_id", nullable = false)
+    private ModelAutor autor;
+
     // 🔹 Constructor vacío (necesario para JPA)
     public ModelLibro() {}
 
@@ -59,5 +63,13 @@ public class ModelLibro {
 
     public void setPublicacion(int publicacion) {
         this.publicacion = publicacion;
+    }
+
+    public ModelAutor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(ModelAutor autor) {
+        this.autor = autor;
     }
 }
