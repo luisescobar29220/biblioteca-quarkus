@@ -11,6 +11,7 @@ public class LibroService {
 
     @Inject
     LibroRepository libroRepository;
+    @Inject
     AutorRepository autorRepository;
 
     public List<ModelLibro> lista(){
