@@ -29,7 +29,7 @@ public class LibroResource {
 
     @PUT
     @Path("/{id}")
-    public ModelLibro actualizar(@PathParam("id") Long id, @Valid LibroDTO dto) {
+    public ModelLibro actualizar(@PathParam("id") Long id, @Valid LibroActualizarDTO dto) {
         return libroService.actualizar(id, dto);
     }
 

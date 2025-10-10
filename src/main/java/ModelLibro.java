@@ -19,7 +19,7 @@ public class ModelLibro {
 
     private int publicacion;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "autor_id", nullable = false)
     private ModelAutor autor;
 

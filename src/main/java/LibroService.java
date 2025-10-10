@@ -33,15 +33,18 @@ public class LibroService {
         return l;
     }
 
-    public ModelLibro actualizar(Long id, LibroDTO dto){
+    public ModelLibro actualizar(Long id, LibroActualizarDTO dto) {
         var l = obtener(id);
-        var autor = autorRepository.findByIdOptional(dto.autorId())
-                .orElseThrow(() -> new NotFoundException("Autor " + dto.autorId() + " no encontrado"));
-
         l.setTitulo(dto.titulo());
         l.setCantidadP(dto.cantidadP());
         l.setPublicacion(dto.publicacion());
-        l.setAutor(autor);
+
+        if (dto.autorId() != null) {
+            ModelAutor autor = autorRepository.findByIdOptional(dto.autorId())
+                    .orElseThrow(() -> new NotFoundException("Autor " + dto.autorId() + " no encontrado"));
+            l.setAutor(autor);
+        }
+
         return l;
     }
 
